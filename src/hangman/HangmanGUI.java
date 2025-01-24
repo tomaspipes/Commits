@@ -1,14 +1,14 @@
-package hangman;
+package src.hangman;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class GameGUI {
+public class HangmanGameGUI {
     private JFrame mainFrame;
     private JPanel mainPanel;
     
          
-    public GameGUI() {
+    public HangmanGameGUI() {
         setupMainFrame();
     }
 
@@ -20,29 +20,27 @@ public class GameGUI {
         
         mainPanel = new JPanel(null);  // Use null layout manager for precise control over component positioning
 
-        
-
         mainPanel = new JPanel(new BorderLayout());
         JLabel welcomeLabel = new JLabel("Bem-Vindo ao Hangman!");
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         welcomeLabel.setBounds(200, 200, 600, 50); // Specify exact location and size
         mainPanel.add(welcomeLabel, BorderLayout.CENTER);
-        
-        
+
+
         JButton startButton = new JButton("Start");
         startButton.setFont(new Font("Arial", Font.PLAIN, 18));
         startButton.addActionListener(e -> showDifficultySelection(startButton));
         startButton.setBounds(450, 600, 100, 50);
         mainFrame.add(startButton);
-    
+
         mainFrame.add(mainPanel);
         mainFrame.setVisible(true);
     }
 
     private void showDifficultySelection(JButton startButton) {
     	mainPanel.removeAll();
-       
+
     	startButton.setVisible(false); // Remove the start button from the panel
        
         mainPanel.revalidate();  // Ensure the panel is updated
@@ -71,19 +69,12 @@ public class GameGUI {
         mainPanel.add(backButton, BorderLayout.SOUTH);
         mainPanel.revalidate();
         mainPanel.repaint();
-    
+
         }
-       
-        
-        
 
     private void startGame(String difficulty) {
         String word = "JAVA"; // Você pode ajustar com base na dificuldade escolhida
         Player player = new Player("Jogador");
-        new Game(mainPanel, player, word);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(GameGUI::new);
+        new HangmanGame(mainPanel, player, word);
     }
 }

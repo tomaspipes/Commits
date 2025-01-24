@@ -1,11 +1,12 @@
-package hangman;
+package src.hangman;
 
+import src.Player;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class HangmanGame {
     private JPanel mainPanel;
     private Player player;
     private String selectedWord;
@@ -19,7 +20,7 @@ public class Game {
 
     private JTextField guessField;
     
-    public Game(JPanel parentPanel, Player player, String chosenWord) {
+    public HangmanGame(JPanel parentPanel, Player player, String chosenWord) {
         this.mainPanel = parentPanel;
         this.player = player;
         this.selectedWord = chosenWord.toUpperCase();
@@ -129,7 +130,7 @@ public class Game {
 
     private void returnToMenu() {
         mainPanel.removeAll();
-        new GameGUI().setupMainFrame(); // Chama a tela inicial
+        new HangmanGameGUI().setupMainFrame(); // Chama a tela inicial
     }
     
 }
